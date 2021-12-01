@@ -80,4 +80,9 @@ public class CommonDefinitions {
     public void integerValueInResponseEqualToSessionVariable(String path, String sessionVar) {
         CommonSteps.integerValueInResponseEqualToSessionVariable(path, sessionVar);
     }
+
+    @And("^the user saves response key \"([^\"]*)\" as session variable with name \"([^\"]*)\"$")
+    public void saveResponseKeyToSession(String key, String varName) {
+        CommonSteps.saveResponseKeyToSession(key, varName);
+    }
 }

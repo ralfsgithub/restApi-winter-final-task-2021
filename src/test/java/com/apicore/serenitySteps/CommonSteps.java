@@ -246,4 +246,14 @@ public class CommonSteps {
 
         Assert.assertEquals("Not expected var value", response.getBody().jsonPath().getString(path), expected);
     }
+
+    /**
+     * Save value from the response to the session variable
+     */
+    @Step
+    public static void saveResponseKeyToSession(String key, String sessionVar) {
+        Response response = Serenity.sessionVariableCalled(RESPONSE);
+        Assert.assertNotNull(key + " not found in body response", response.getBody().jsonPath().getString(key));
+        Serenity.setSessionVariable(sessionVar).to(response.getBody().jsonPath().getString(key));
+    }
 }

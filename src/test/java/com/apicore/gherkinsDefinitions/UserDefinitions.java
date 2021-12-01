@@ -5,7 +5,7 @@ import cucumber.api.java.en.And;
 import net.thucydides.core.annotations.Steps;
 
 /**
- * This is class contains tax definitions
+ * This is class contains user definitions
  */
 
 public class UserDefinitions {
