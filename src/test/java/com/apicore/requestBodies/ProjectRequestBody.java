@@ -15,4 +15,18 @@ public class ProjectRequestBody {
 
         return requestBody.replace("$NAME", name);
     }
+
+    public String getUpdateProjectWithNameAndBodyAndStateBody(String newName, String newBody, String state) throws Exception {
+
+        String requestBody = JsonReader.readJsonFileAsString(dir + "/src/test/resources/data/updateProjectWithNameAndBodyAndState.json");
+
+        return requestBody.replace("$NAME", newName).replace("$BODY", newBody).replace("$STATE", state);
+    }
+
+    public String getUpdateProjectWithStateBody(String state) throws Exception {
+
+        String requestBody = JsonReader.readJsonFileAsString(dir + "/src/test/resources/data/updateProjectWithState.json");
+
+        return requestBody.replace("$STATE", state);
+    }
 }

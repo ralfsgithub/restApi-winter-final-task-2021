@@ -1,7 +1,9 @@
 package com.apicore.gherkinsDefinitions;
 
 import com.apicore.serenitySteps.ProjectSteps;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import net.thucydides.core.annotations.Steps;
 
 /**
@@ -35,5 +37,15 @@ public class ProjectDefinitions {
     @And("^the user gets project with id \"([^\"]*)\"$")
     public void getProjectById(String id) throws Exception {
         projectSteps.getProjectById(id);
+    }
+
+    @Then("^the user updates created project with new name \"([^\"]*)\", new body \"([^\"]*)\" and state \"([^\"]*)\"$")
+    public void theUserUpdatesCreatedProjectWithNewNameNewBodyAndState(String newName, String newBody, String state) throws Throwable {
+        projectSteps.updateProjectWithNameAndBodyAndState(newName, newBody, state);
+    }
+
+    @Then("^the user updates created project with new state \"([^\"]*)\"$")
+    public void theUserUpdatesCreatedProjectWithNewState(String state) throws Throwable {
+        projectSteps.theUserUpdatesCreatedProjectWithNewState(state);
     }
 }

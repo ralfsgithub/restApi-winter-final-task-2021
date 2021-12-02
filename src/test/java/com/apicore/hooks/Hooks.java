@@ -1,13 +1,18 @@
 package com.apicore.hooks;
 
-import cucumber.api.java.After;
+import com.apicore.serenitySteps.CommonSteps;
+import com.apicore.serenitySteps.ProjectSteps;
+import cucumber.api.java.Before;
 
 import java.io.IOException;
 
 public class Hooks {
 
-    @After("@HookAfterScenrarioExample")
-    public static void hookAfterScenrarioExample() throws IOException {
-        System.out.println("after scenario hook");
+    @Before("@RemoveProjectHook")
+    public static void hookBeforeRemoveAllProjects() throws Exception {
+        ProjectSteps projectSteps = new ProjectSteps();
+        CommonSteps.setAuthToken();
+        projectSteps.listProjects();
+        projectSteps.removeListOfProjects();
     }
 }
