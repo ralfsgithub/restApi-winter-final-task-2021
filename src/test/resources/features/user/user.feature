@@ -1,6 +1,6 @@
 Feature: user
 
-  @User @Smoke
+  @user @smoke
   Scenario Outline: get_user_profile
     Given the user is authorised
     And user gets profile information
