@@ -90,8 +90,8 @@ Feature: project
     Then the user updates created project with new state "<state>"
     When the user gets status code "422"
     When the following values are present in the body
-      | message   | Validation Failed                                                 |
-      | errors[0] | Variable $state of type ProjectState was provided invalid value   |
+      | message   | Validation Failed                                               |
+      | errors[0] | Variable $state of type ProjectState was provided invalid value |
     And the user removes created project
     Then the user gets status code "204"
     Examples:
