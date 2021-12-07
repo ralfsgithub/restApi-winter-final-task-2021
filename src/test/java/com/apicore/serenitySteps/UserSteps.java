@@ -37,6 +37,5 @@ public class UserSteps {
 
         CommonSteps.sendRequestWithJsonBody("POST", "/public/v1/users",
                 new UserRequestBody().userCreatesAdditionalProfileWithAlreadyExistingEmail(newName,email,newGender,newStatus));
-
     }
 }
