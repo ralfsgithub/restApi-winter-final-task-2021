@@ -23,7 +23,7 @@ public class CommonSteps {
 
     public static final String RESPONSE = "response";
     private static RequestSpecification requestSpecification = rest();
-    public static String token = null;
+    public static String Bearer = null;
 
     /**
      * Method to create a request
@@ -31,8 +31,8 @@ public class CommonSteps {
     @Step
     public static void sendRequest(String method, String endpoint) {
 
-        if (token != null) {
-            requestSpecification.header("Authorization", "Bearer " + token);
+        if (Bearer != null) {
+            requestSpecification.header("Authorization", "Bearer " + Bearer);
         }
 
         Serenity.setSessionVariable("REQUEST-HEADERS").to((String) ((RequestSpecificationDecorated) requestSpecification).getHeaders().toString());
@@ -52,6 +52,8 @@ public class CommonSteps {
      */
     @Step
     public static void sendRequestWithJsonBody(String method, String endpoint, String body) throws IOException {
+
+
         JSONObject bodyJson = new JSONObject(body);
         Map<String, Object> bodyMap = bodyJson.toMap();
 
@@ -88,7 +90,7 @@ public class CommonSteps {
         Properties prop = new Properties();
         prop.load(new FileInputStream("src/main/java/resources/data.properties"));
 
-        hashMap.put("Authorization", "token " + prop.getProperty("token"));
+        hashMap.put("Authorization", "Bearer " + prop.getProperty("Bearer"));
         hashMap.put("Content-Type", "application/json");
         hashMap.put("Accept", "application/vnd.github.v3+json");
 
@@ -196,7 +198,7 @@ public class CommonSteps {
      */
     @Step
     public static void unsetAuthToken() throws IOException {
-        token = null;
+        Bearer = null;
         requestSpecification = rest();
     }
 
