@@ -1,6 +1,6 @@
 package com.apicore.serenitySteps;
 
-import com.apicore.requestBodies.CommonRequestBody;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
@@ -178,11 +178,6 @@ public class CommonSteps {
     /**
      * Method which is used to create a request with the empty body
      */
-    @Step
-    public void createEmptyBodyRequest(String path) throws IOException {
-        CommonSteps.sendRequestWithJsonBody("POST",
-                path, new CommonRequestBody().getEmptyBody());
-    }
 
     /**
      * Method which is used to check if path is present in the body
