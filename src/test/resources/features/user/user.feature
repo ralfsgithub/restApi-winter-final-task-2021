@@ -18,7 +18,7 @@ Feature: Create User profile and delete it
 
     Examples:
       | name      | email              | gender | status |
-      | TestUser1 |TestEmail1@judo.com | female | active |
+      | TestUser11 |TestEmail11@judo.com | female | active |
 
 
   @user @smoke
@@ -41,7 +41,7 @@ Feature: Create User profile and delete it
 
     Examples:
       | name       |       email       | gender | status |  newName          |
-      | TestUser2  |TestUer2@judo.com  | female | active |  UpdatedUserNAme  |
+      | TestUser21  |TestUer21@judo.com  | female | active |  UpdatedUserNAme  |
 
 
   @user @smoke
@@ -49,14 +49,17 @@ Feature: Create User profile and delete it
     Given the user is authorised
     When user creates profile with "<name>","<email>","<gender>" and "<status>"
     Then the user gets status code "201"
+    And the user saves response key "data.id" as session variable with name "userId"
     When user creates new profile with "<newName>", already used "<email>","<newGender>" and "<newStatus>"
     Then the user gets status code "422"
     And the value of path "data.field" is "[email]"
     And the value of path "data.message" is "[has already been taken]"
+    And the user deletes profile
+    And the user gets status code "204"
 
     Examples:
       | name       |       email       | gender | status |  newName |  newGender | newStatus |
-      | TestUser3  |TestUser3@judo.com | female | active |  Rihads  |   male     |  inactive |
+      | TestUser31  |TestUser32@judo.com | female | active |  Rihads  |   male     |  inactive |
 
 
   @user @smoke
@@ -73,4 +76,4 @@ Feature: Create User profile and delete it
 
     Examples:
       | name      | email             | gender | status |
-      | TestUser4 |TestUser4@judo.com | male   | active |
+      | TestUser41 |TestUser41@judo.com | male   | active |
